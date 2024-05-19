@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  htmlparser-frontend:
+    build: .
+    container_name: htmlparser-frontend
+    volumes:
+      - ../:/html-parser-frontend
+    command: bash
+    tty: true
+    ports:
+      - 8787:8787
