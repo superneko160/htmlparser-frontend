@@ -2,8 +2,6 @@ import { useState } from 'react'
 import Form from './components/Form'
 import FormResult from './components/FormResult'
 
-import './App.css'
-
 function App() {
     const [result, setResult] = useState('')
 
@@ -14,7 +12,7 @@ function App() {
     }
 
     return (
-        <div>
+        <div className='max-w-5xl mx-auto p-8 text-center'>
             <Form onSubmit={handleSubmit} />
             <FormResult value={result} />
         </div>
