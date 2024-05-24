@@ -20,18 +20,33 @@ function Form({ onSubmit }: FormProps) {
         <div>
             <form onSubmit={handleSubmit}>
                 <div className='my-1'>
-                    <label htmlFor='url' className='text-medium'>
-                        URL
-                    </label>
-                    <input
-                        type='url'
-                        id='url'
-                        value={value}
-                        onChange={e => setValue(e.target.value)}
-                        className='rounded-lg border border-transparent px-2 py-1 mx-0.5 text-base font-medium text-slate-800 bg-slate-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
-                    />
+                    <div className='m-1'>
+                        <label htmlFor='url' className='block text-sm'>
+                            URL
+                        </label>
+                        <input
+                            type='url'
+                            id='url'
+                            value={value}
+                            onChange={e => setValue(e.target.value)}
+                            placeholder='https://example.com'
+                            className='rounded-lg border border-transparent px-2 py-1 mx-0.5 text-base font-medium text-slate-800 bg-slate-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
+                        />
+                    </div>
+                    <div className='m-1'>
+                        <label htmlFor='elements' className='block text-sm'>
+                            Elements
+                        </label>
+                        <input
+                            type='text'
+                            id='elements'
+                            value=''
+                            placeholder='div'
+                            className='rounded-lg border border-transparent px-2 py-1 mx-0.5 text-base font-medium text-slate-800 bg-slate-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
+                        />
+                    </div>
                 </div>
-                <div className='flex justify-center'>
+                <div className='flex justify-center my-3'>
                     <div className='mr-4'>
                         <label htmlFor='id' className='text-medium mr-2'>
                             id
