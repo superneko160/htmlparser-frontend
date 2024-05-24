@@ -20,7 +20,7 @@ function Form({ onSubmit }: FormProps) {
         <div>
             <form onSubmit={handleSubmit}>
                 <div className='my-1'>
-                    <label for='url' className='text-medium'>
+                    <label htmlFor='url' className='text-medium'>
                         URL
                     </label>
                     <input
