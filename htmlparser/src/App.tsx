@@ -1,20 +1,23 @@
 import { useState } from 'react'
+import type { FormData } from './types'
 import Form from './components/Form'
 import FormResult from './components/FormResult'
 
 function App() {
-    const [result, setResult] = useState('')
+    const [formData, setFormData] = useState<FormData>({
+        url: '',
+        elements: '',
+        attrs: [],
+    })
 
-    const handleSubmit = (value: string) => {
-        // ここで値の処理を行う
-        // 現在は入力された文字をそのまま出力するだけ
-        setResult(value.toUpperCase())
+    const handleSubmit = (formData: FormData) => {
+        setFormData(formData)
     }
 
     return (
         <div className='max-w-5xl mx-auto p-8 text-center'>
             <Form onSubmit={handleSubmit} />
-            <FormResult value={result} />
+            {Object.keys(formData).length > 0 && <FormResult formData={formData} />}
         </div>
     )
 }

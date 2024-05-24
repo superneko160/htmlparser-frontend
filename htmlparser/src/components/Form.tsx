@@ -1,19 +1,42 @@
 import type React from 'react'
 import { useState } from 'react'
+import type { FormData } from './../types'
 import htmltagIcon from '/htmltag.svg'
 import downloadIcon from '/download.svg'
 
 type FormProps = {
-    onSubmit: (value: string) => void
+    onSubmit: (formData: FormData) => void
 }
 
 function Form({ onSubmit }: FormProps) {
-    const [value, setValue] = useState('')
+    const [formData, setFormData] = useState<FormData>({
+        url: '',
+        elements: '',
+        attrs: [],
+    })
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        onSubmit(value)
-        setValue('')
+        onSubmit(formData)
+        setFormData({ url: '', elements: '', attrs: [] })
+    }
+
+    const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, url: e.target.value })
+    }
+
+    const handleElementsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, elements: e.target.value })
+    }
+
+    const handleAttrChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value, checked } = e.target
+        setFormData({
+            ...formData,
+            attrs: checked
+                ? [...formData.attrs, value]
+                : formData.attrs.filter(attr => attr !== value),
+        })
     }
 
     return (
@@ -27,8 +50,8 @@ function Form({ onSubmit }: FormProps) {
                         <input
                             type='url'
                             id='url'
-                            value={value}
-                            onChange={e => setValue(e.target.value)}
+                            value={formData.url}
+                            onChange={handleUrlChange}
                             placeholder='https://example.com'
                             className='rounded-lg border border-transparent px-2 py-1 mx-0.5 text-base font-medium text-slate-800 bg-slate-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                         />
@@ -40,7 +63,8 @@ function Form({ onSubmit }: FormProps) {
                         <input
                             type='text'
                             id='elements'
-                            value=''
+                            value={formData.elements}
+                            onChange={handleElementsChange}
                             placeholder='div'
                             className='rounded-lg border border-transparent px-2 py-1 mx-0.5 text-base font-medium text-slate-800 bg-slate-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                         />
@@ -56,6 +80,8 @@ function Form({ onSubmit }: FormProps) {
                             name='attrs[]'
                             id='id'
                             value='id'
+                            onChange={handleAttrChange}
+                            checked={formData.attrs.includes('id')}
                             className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                         />
                     </div>
@@ -68,6 +94,8 @@ function Form({ onSubmit }: FormProps) {
                             name='attrs[]'
                             id='class'
                             value='class'
+                            onChange={handleAttrChange}
+                            checked={formData.attrs.includes('class')}
                             className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                         />
                     </div>
