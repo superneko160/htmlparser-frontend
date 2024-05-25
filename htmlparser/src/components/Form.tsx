@@ -18,25 +18,25 @@ function Form({ onSubmit }: FormProps) {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         onSubmit(formData)
-        setFormData({ url: '', elements: '', attrs: [] })
+        setFormData(() => ({ url: '', elements: '', attrs: [] }))
     }
 
     const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, url: e.target.value })
+        setFormData(prevFormData => ({ ...prevFormData, url: e.target.value }))
     }
 
     const handleElementsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, elements: e.target.value })
+        setFormData(prevFormData => ({ ...prevFormData, elements: e.target.value }))
     }
 
     const handleAttrChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value, checked } = e.target
-        setFormData({
-            ...formData,
+        setFormData(prevFormData => ({
+            ...prevFormData,
             attrs: checked
-                ? [...formData.attrs, value]
-                : formData.attrs.filter(attr => attr !== value),
-        })
+                ? [...prevFormData.attrs, value]
+                : prevFormData.attrs.filter(attr => attr !== value),
+        }))
     }
 
     return (

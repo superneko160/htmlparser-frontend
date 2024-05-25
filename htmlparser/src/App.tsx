@@ -11,7 +11,7 @@ function App() {
     })
 
     const handleSubmit = (formData: FormData) => {
-        setFormData(formData)
+        setFormData(() => formData)
     }
 
     return (
