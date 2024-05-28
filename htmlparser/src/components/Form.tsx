@@ -13,12 +13,13 @@ function Form({ onSubmit }: FormProps) {
         url: '',
         elements: '',
         attrs: [],
+        api: '',
     })
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         onSubmit(formData)
-        setFormData(() => ({ url: '', elements: '', attrs: [] }))
+        setFormData(() => ({ url: '', elements: '', attrs: [], api: '' }))
     }
 
     const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +38,10 @@ function Form({ onSubmit }: FormProps) {
                 ? [...prevFormData.attrs, value]
                 : prevFormData.attrs.filter(attr => attr !== value),
         }))
+    }
+
+    const handleButtonClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData(prevFormData => ({ ...prevFormData, api: e.target.value }))
     }
 
     return (
@@ -103,6 +108,8 @@ function Form({ onSubmit }: FormProps) {
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-1 my-1 px-20'>
                     <button
                         type='submit'
+                        onClick={handleButtonClick}
+                        value='https://htmlparser.supernekocat31.workers.dev/parse'
                         className='flex items-center justify-center rounded-lg border border-transparent px-5 py-2.5 mx-1 text-base font-medium text-slate-100 bg-orange-600 hover:bg-orange-500 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                     >
                         <img src={htmltagIcon} className='w-7 pr-2' alt='parse HTML' />
@@ -110,6 +117,8 @@ function Form({ onSubmit }: FormProps) {
                     </button>
                     <button
                         type='submit'
+                        onClick={handleButtonClick}
+                        value='https://htmlparser.supernekocat31.workers.dev/parse/json'
                         className='flex items-center justify-center rounded-lg border border-transparent px-5 py-2.5 mx-1 text-base font-medium text-slate-100 bg-sky-600 hover:bg-sky-500 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                     >
                         <img src={downloadIcon} className='w-7 pr-2' alt='download json' />
@@ -117,6 +126,8 @@ function Form({ onSubmit }: FormProps) {
                     </button>
                     <button
                         type='submit'
+                        onClick={handleButtonClick}
+                        value='https://htmlparser.supernekocat31.workers.dev/parse/csv'
                         className='flex items-center justify-center rounded-lg border border-transparent px-5 py-2.5 mx-1 text-base font-medium text-slate-100 bg-emerald-600 hover:bg-emerald-500 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                     >
                         <img src={downloadIcon} className='w-7 pr-2' alt='download csv' />

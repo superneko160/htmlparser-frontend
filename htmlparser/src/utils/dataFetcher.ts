@@ -10,12 +10,11 @@ export async function fetchData(formData: FormData) {
         postData.append('url', formData.url)
         postData.append('elements', formData.elements)
         postData.append('attrs[]', formData.attrs)
-        const response = await fetch('https://htmlparser.supernekocat31.workers.dev/parse', {
+        const response = await fetch(formData.api, {
             method: 'POST',
             body: postData,
         })
-        const data = await response.json()
-        return data
+        return await response.json()
     } catch (error) {
         console.error('Error fetching data:', error)
         return null
