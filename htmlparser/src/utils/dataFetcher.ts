@@ -1,5 +1,9 @@
 import type { FormData } from './../types'
 
+/**
+ * WeabAPIにPOST送信しデータを取得
+ * @param {FormData} formData
+ */
 export async function fetchData(formData: FormData) {
     try {
         const postData = new FormData()
