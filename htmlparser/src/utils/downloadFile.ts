@@ -21,7 +21,7 @@ export function downloadFile(data) {
  * @param {string} apiUrl APIのURL
  * @return {string} ファイル名
  */
-export function getDownloadFileName(apiUrl) {
+export function getDownloadFileName(apiUrl: string): string {
     let fileName = 'result'
     if (apiUrl === HTMLPARSER_URLS.DOWNLOAD_JSON) fileName += '.json'
     if (apiUrl === HTMLPARSER_URLS.DOWNLOAD_CSV) fileName += '.csv'
@@ -33,7 +33,7 @@ export function getDownloadFileName(apiUrl) {
  * @param {string} apiUrl APIのURL
  * @return {boolean} CSV or JSON: true | other: false
  */
-export function isDownloadFileUrl(apiUrl) {
+export function isDownloadFileUrl(apiUrl: string): boolean {
     if (apiUrl === HTMLPARSER_URLS.DOWNLOAD_JSON || apiUrl === HTMLPARSER_URLS.DOWNLOAD_CSV)
         return true
     return false
