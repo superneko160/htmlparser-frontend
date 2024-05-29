@@ -1,4 +1,5 @@
 import type { FormData } from './../types'
+import { getDownloadFileName, isDownloadFileUrl } from './downloadFile'
 
 /**
  * WeabAPIにPOST送信しデータを取得
@@ -14,6 +15,12 @@ export async function fetchData(formData: FormData) {
             method: 'POST',
             body: postData,
         })
+
+        const fileName = getDownloadFileName(formData.api)
+
+        // レスポンスをBlobオブジェクトに変換して返却
+        if (isDownloadFileUrl(formData.api)) return { content: await response.blob(), fileName }
+        // JSONで返却
         return await response.json()
     } catch (error) {
         console.error('Error fetching data:', error)
