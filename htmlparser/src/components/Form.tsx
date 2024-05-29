@@ -1,6 +1,7 @@
 import type React from 'react'
 import { useState } from 'react'
 import type { FormData } from './../types'
+import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import htmltagIcon from '/htmltag.svg'
 import downloadIcon from '/download.svg'
 
@@ -109,7 +110,7 @@ function Form({ onSubmit }: FormProps) {
                     <button
                         type='submit'
                         onClick={handleButtonClick}
-                        value='https://htmlparser.supernekocat31.workers.dev/parse'
+                        value={HTMLPARSER_URLS.RETURN_JSON}
                         className='flex items-center justify-center rounded-lg border border-transparent px-5 py-2.5 mx-1 text-base font-medium text-slate-100 bg-orange-600 hover:bg-orange-500 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                     >
                         <img src={htmltagIcon} className='w-7 pr-2' alt='parse HTML' />
@@ -118,7 +119,7 @@ function Form({ onSubmit }: FormProps) {
                     <button
                         type='submit'
                         onClick={handleButtonClick}
-                        value='https://htmlparser.supernekocat31.workers.dev/parse/json'
+                        value={HTMLPARSER_URLS.DOWNLOAD_JSON}
                         className='flex items-center justify-center rounded-lg border border-transparent px-5 py-2.5 mx-1 text-base font-medium text-slate-100 bg-sky-600 hover:bg-sky-500 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                     >
                         <img src={downloadIcon} className='w-7 pr-2' alt='download json' />
@@ -127,7 +128,7 @@ function Form({ onSubmit }: FormProps) {
                     <button
                         type='submit'
                         onClick={handleButtonClick}
-                        value='https://htmlparser.supernekocat31.workers.dev/parse/csv'
+                        value={HTMLPARSER_URLS.DOWNLOAD_CSV}
                         className='flex items-center justify-center rounded-lg border border-transparent px-5 py-2.5 mx-1 text-base font-medium text-slate-100 bg-emerald-600 hover:bg-emerald-500 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                     >
                         <img src={downloadIcon} className='w-7 pr-2' alt='download csv' />
