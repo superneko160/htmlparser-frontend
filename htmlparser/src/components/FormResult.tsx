@@ -23,12 +23,57 @@ function FormResult({ formData }: FormResultProps) {
 
     return (
         <div>
-            <p>Debug</p>
-            <p>URL: {formData.url}</p>
-            <p>Attrs: {formData.attrs.join(', ')}</p>
-            <p>Elements: {formData.elements}</p>
+            <ul>
+                <li>
+                    <span class='font-semibold text-gray-900'>URL:</span> {formData.url}
+                </li>
+                <li>
+                    <span class='font-semibold text-gray-900'>要素:</span> {formData.elements}
+                </li>
+                <li>
+                    <span class='font-semibold text-gray-900'>属性:</span>{' '}
+                    {formData.attrs.length === 0 ? 'ALL' : formData.attrs.join(', ')}
+                </li>
+            </ul>
             <div>
-                {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>データがありません</p>}
+                {data ? (
+                    <div className='container p-2 mx-auto sm:p-4'>
+                        <div className='overflow-x-auto'>
+                            <table className='min-w-full text-xs'>
+                                <colgroup>
+                                    <col className='w-1/5' />
+                                    <col className='w-1/5' />
+                                    <col className='w-3/5' />
+                                </colgroup>
+                                <thead className='bg-gray-300'>
+                                    <tr className='text-center'>
+                                        <th className='p-3'>要素名</th>
+                                        <th className='p-3'>属性</th>
+                                        <th className='p-3 text-left'>値</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {Object.entries(data.data).map(([element, attributes]) =>
+                                        attributes.map((attr, index) =>
+                                            Object.entries(attr).map(([key, value]) => (
+                                                <tr
+                                                    key={`${element}-${index}-${key}`}
+                                                    className='border-b border-opacity-20 border-gray-400 bg-gray-50'
+                                                >
+                                                    <td className='p-3'>{element}</td>
+                                                    <td className='p-3'>{key}</td>
+                                                    <td className='p-3 text-left'>{value}</td>
+                                                </tr>
+                                            )),
+                                        ),
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                ) : (
+                    <p>データがありません</p>
+                )}
             </div>
         </div>
     )
