@@ -1,10 +1,11 @@
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
+import type { DownloadData } from './../types'
 
 /**
  * ファイルでダウンロード
- * @param {object} data ダウンロードするデータ
+ * @param {Blob} data ダウンロードするデータ
  */
-export function downloadFile(data) {
+export function downloadFile(data: DownloadData) {
     // Blobオブジェクトから新しいオブジェクトURLを作成
     const url = window.URL.createObjectURL(new Blob([data.content]))
     // リンクを作成してクリックすることで、ファイルをダウンロード

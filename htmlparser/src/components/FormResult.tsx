@@ -1,4 +1,3 @@
-import type React from 'react'
 import { useState, useEffect } from 'react'
 import type { FormData } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
@@ -25,13 +24,13 @@ function FormResult({ formData }: FormResultProps) {
         <div>
             <ul>
                 <li>
-                    <span class='font-semibold text-gray-900'>URL:</span> {formData.url}
+                    <span className='font-semibold text-gray-900'>URL:</span> {formData.url}
                 </li>
                 <li>
-                    <span class='font-semibold text-gray-900'>要素:</span> {formData.elements}
+                    <span className='font-semibold text-gray-900'>要素:</span> {formData.elements}
                 </li>
                 <li>
-                    <span class='font-semibold text-gray-900'>属性:</span>{' '}
+                    <span className='font-semibold text-gray-900'>属性:</span>{' '}
                     {formData.attrs.length === 0 ? 'ALL' : formData.attrs.join(', ')}
                 </li>
             </ul>

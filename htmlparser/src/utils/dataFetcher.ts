@@ -10,7 +10,10 @@ export async function fetchData(formData: FormData) {
         const postData = new FormData()
         postData.append('url', formData.url)
         postData.append('elements', formData.elements)
-        postData.append('attrs[]', formData.attrs)
+        for (const attr of formData.attrs) {
+            postData.append('attrs[]', attr)
+        }
+
         const response = await fetch(formData.api, {
             method: 'POST',
             body: postData,

@@ -4,3 +4,8 @@ export type FormData = {
     attrs: string[]
     api: string
 }
+
+export type DownloadData = {
+    content: Blob
+    fileName: string
+}

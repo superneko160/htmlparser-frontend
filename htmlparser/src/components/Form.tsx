@@ -1,4 +1,3 @@
-import type React from 'react'
 import { useState } from 'react'
 import type { FormData } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
@@ -20,7 +19,6 @@ function Form({ onSubmit }: FormProps) {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         onSubmit(formData)
-        setFormData(() => ({ url: '', elements: '', attrs: [], api: '' }))
     }
 
     const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,8 +39,9 @@ function Form({ onSubmit }: FormProps) {
         }))
     }
 
-    const handleButtonClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData(prevFormData => ({ ...prevFormData, api: e.target.value }))
+    const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const currentApi = e.currentTarget.value
+        setFormData(prevFormData => ({ ...prevFormData, api: currentApi }))
     }
 
     return (
@@ -59,6 +58,7 @@ function Form({ onSubmit }: FormProps) {
                             value={formData.url}
                             onChange={handleUrlChange}
                             placeholder='https://example.com'
+                            required
                             className='rounded-lg border border-transparent px-2 py-1 mx-0.5 text-base font-medium text-slate-800 bg-slate-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                         />
                     </div>
@@ -72,6 +72,7 @@ function Form({ onSubmit }: FormProps) {
                             value={formData.elements}
                             onChange={handleElementsChange}
                             placeholder='div'
+                            required
                             className='rounded-lg border border-transparent px-2 py-1 mx-0.5 text-base font-medium text-slate-800 bg-slate-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                         />
                     </div>
