@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { FormData } from './../types'
+import type { FormData, AttributeValue, ApiResponse } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import { fetchData } from './../utils/dataFetcher'
 import { isDownloadFileUrl, downloadFile } from './../utils/downloadFile'
@@ -9,7 +9,7 @@ type FormResultProps = {
 }
 
 function FormResult({ formData }: FormResultProps) {
-    const [data, setData] = useState(null)
+    const [data, setData] = useState<ApiResponse | null>(null)
 
     useEffect(() => {
         const fetchAndSetData = async () => {
@@ -53,7 +53,7 @@ function FormResult({ formData }: FormResultProps) {
                                 </thead>
                                 <tbody>
                                     {Object.entries(data.data).map(([element, attributes]) =>
-                                        attributes.map((attr, index) =>
+                                        attributes.map((attr: AttributeValue, index: number) =>
                                             Object.entries(attr).map(([key, value]) => (
                                                 <tr
                                                     key={`${element}-${index}-${key}`}
@@ -61,7 +61,9 @@ function FormResult({ formData }: FormResultProps) {
                                                 >
                                                     <td className='p-3'>{element}</td>
                                                     <td className='p-3'>{key}</td>
-                                                    <td className='p-3 text-left'>{value}</td>
+                                                    <td className='p-3 text-left'>
+                                                        {value as string}
+                                                    </td>
                                                 </tr>
                                             )),
                                         ),
