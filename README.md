@@ -6,6 +6,10 @@
 - Download the results of parsing HTML attributes as a JSON-formatted file
 - Download the results of parsing HTML attributes as a CSV-formatted file
 
+## Architecture
+
+![arch](./docs/architecture.png)
+
 ## Run
 
 ```bash
