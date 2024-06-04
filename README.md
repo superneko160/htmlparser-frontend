@@ -38,11 +38,13 @@ cd htmlparser
 bun format
 ```
 
-## Tech Stacks
+## Stacks
 
-- React
-- TypeScript
-- Bun
-- Biome.js
-- Docker
-
+| Category | Technology |
+| ---- | ---- |
+| Language | TypeScript |
+| Package manager | Bun |
+| Library | React |
+| Platform | Cloudflare Pages |
+| Formatter / Linter | Biome |
+| Development environment | Docker |
