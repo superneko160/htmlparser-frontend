@@ -107,7 +107,7 @@ function Form({ onSubmit }: FormProps) {
                         />
                     </div>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-1 my-1 px-14'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-1 my-1 px-4 md:px-20'>
                     <button
                         type='submit'
                         onClick={handleButtonClick}
