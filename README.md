@@ -14,6 +14,13 @@
 
 [htmlparser-backend](https://github.com/superneko160/htmlparser-backend)
 
+## SetUp
+
+```bash
+cd htmlparser
+bun install
+```
+
 ## Run
 
 ```bash
@@ -21,11 +28,10 @@ cd htmlparser
 bun run dev
 ```
 
-## SetUp
+## Access
 
-```bash
-cd htmlparser
-bun install
+```
+http://localhost:5173
 ```
 
 ## Lint
