@@ -44,6 +44,15 @@ function Form({ onSubmit }: FormProps) {
         setFormData(prevFormData => ({ ...prevFormData, api: currentApi }))
     }
 
+    const resetForm = () => {
+        setFormData({
+            url: '',
+            elements: '',
+            attrs: [],
+            api: '',
+        })
+    }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -78,7 +87,7 @@ function Form({ onSubmit }: FormProps) {
                     </div>
                 </div>
                 <div className='flex justify-center my-3'>
-                    <div className='mr-4'>
+                    <div className='mr-4 mt-2'>
                         <label htmlFor='id' className='text-medium mr-2'>
                             id
                         </label>
@@ -92,7 +101,7 @@ function Form({ onSubmit }: FormProps) {
                             className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                         />
                     </div>
-                    <div>
+                    <div className='mt-2'>
                         <label htmlFor='class' className='text-medium mr-2'>
                             class
                         </label>
@@ -105,6 +114,15 @@ function Form({ onSubmit }: FormProps) {
                             checked={formData.attrs.includes('class')}
                             className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                         />
+                    </div>
+                    <div>
+                        <button
+                            type='button'
+                            onClick={resetForm}
+                            className='rounded-lg border border-transparent px-2 py-1 ml-2 text-base text-slate-100 bg-slate-500 cursor-pointer transition-colors hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-opacity-75'
+                        >
+                        リセット
+                        </button>
                     </div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-1 my-1 px-4 md:px-20'>
