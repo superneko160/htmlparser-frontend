@@ -121,7 +121,7 @@ function Form({ onSubmit }: FormProps) {
                             onClick={resetForm}
                             className='rounded-lg border border-transparent px-2 py-1 ml-2 text-base text-slate-100 bg-slate-500 cursor-pointer transition-colors hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-opacity-75'
                         >
-                        リセット
+                            リセット
                         </button>
                     </div>
                 </div>
