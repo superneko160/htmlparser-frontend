@@ -18,6 +18,11 @@ export type ElementData = {
     [element: string]: AttributeValue[]
 }
 
-export interface ApiResponse {
+export interface SuccessApiResponse {
     data: ElementData
+}
+
+export interface ErrorApiResponse {
+    status: number
+    error: string
 }

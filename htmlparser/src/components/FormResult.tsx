@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { FormData, AttributeValue, ApiResponse } from './../types'
+import type { FormData, AttributeValue, SuccessApiResponse, ErrorApiResponse } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import { fetchData } from './../utils/dataFetcher'
 import { isDownloadFileUrl, downloadFile } from './../utils/downloadFile'
@@ -9,13 +9,30 @@ type FormResultProps = {
 }
 
 function FormResult({ formData }: FormResultProps) {
-    const [data, setData] = useState<ApiResponse | null>(null)
+    const [data, setData] = useState<SuccessApiResponse | null>(null)
+    const [error, setError] = useState<string | null>(null)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchAndSetData = async () => {
-            const result = await fetchData(formData)
-            if (formData.api === HTMLPARSER_URLS.RETURN_JSON) setData(result)
-            if (isDownloadFileUrl(formData.api)) downloadFile(result)
+            setIsLoading(true)
+            setError(null)
+            try {
+                const result = await fetchData(formData)
+                if (formData.api === HTMLPARSER_URLS.RETURN_JSON) {
+                    if ('data' in result) {
+                        setData(result as SuccessApiResponse)
+                    } else {
+                        setError((result as ErrorApiResponse).error)
+                    }
+                }
+                if (isDownloadFileUrl(formData.api)) downloadFile(result)
+            } catch (error) {
+                console.error('データの取得中にエラーが発生しました:', error)
+                setError('データの取得中にエラーが発生しました')
+            } finally {
+                setIsLoading(false)
+            }
         }
         fetchAndSetData()
     }, [formData])
@@ -24,18 +41,23 @@ function FormResult({ formData }: FormResultProps) {
         <div>
             <ul>
                 <li>
-                    <span className='font-semibold text-gray-900'>URL:</span> {formData.url}
+                    <span className='font-semibold text-gray-900'>取得URL:</span> {formData.url}
                 </li>
                 <li>
-                    <span className='font-semibold text-gray-900'>要素:</span> {formData.elements}
+                    <span className='font-semibold text-gray-900'>取得要素:</span>{' '}
+                    {formData.elements}
                 </li>
                 <li>
-                    <span className='font-semibold text-gray-900'>属性:</span>{' '}
-                    {formData.attrs.length === 0 ? 'ALL' : formData.attrs.join(', ')}
+                    <span className='font-semibold text-gray-900'>取得属性:</span>{' '}
+                    {formData.attrs.length === 0 ? '全属性' : formData.attrs.join(', ')}
                 </li>
             </ul>
             <div>
-                {data ? (
+                {isLoading ? (
+                    <p>解析中...</p>
+                ) : error ? (
+                    <p className='text-red-500'>エラー: {error}</p>
+                ) : data ? (
                     <div className='container p-2 mx-auto sm:p-4'>
                         <div className='overflow-x-auto'>
                             <table className='min-w-full text-xs'>
@@ -46,7 +68,7 @@ function FormResult({ formData }: FormResultProps) {
                                 </colgroup>
                                 <thead className='bg-gray-300'>
                                     <tr className='text-center'>
-                                        <th className='p-3'>要素名</th>
+                                        <th className='p-3'>要素</th>
                                         <th className='p-3'>属性</th>
                                         <th className='p-3 text-left'>値</th>
                                     </tr>
@@ -73,7 +95,7 @@ function FormResult({ formData }: FormResultProps) {
                         </div>
                     </div>
                 ) : (
-                    <p>データがありません</p>
+                    <p>No Data</p>
                 )}
             </div>
         </div>
