@@ -3,6 +3,7 @@ import type { FormData, AttributeValue, SuccessApiResponse, ErrorApiResponse } f
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import { fetchData } from './../utils/dataFetcher'
 import { isDownloadFileUrl, downloadFile } from './../utils/downloadFile'
+import Loading from './Loading'
 
 type FormResultProps = {
     formData: FormData
@@ -54,7 +55,7 @@ function FormResult({ formData }: FormResultProps) {
             </ul>
             <div>
                 {isLoading ? (
-                    <p>解析中...</p>
+                    <Loading />
                 ) : error ? (
                     <p className='text-red-500'>エラー: {error}</p>
                 ) : data ? (
