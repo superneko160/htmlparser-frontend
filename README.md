@@ -48,6 +48,13 @@ cd htmlparser
 bun format
 ```
 
+## Test
+
+```bash
+cd htmlparser
+bun test
+```
+
 ## Stacks
 
 | Category | Technology |
@@ -56,5 +63,6 @@ bun format
 | Package manager | Bun |
 | Library | React |
 | Platform | Cloudflare Pages |
+| Testing Framework | Vitest |
 | Formatter / Linter | Biome |
 | Development environment | Docker |
