@@ -39,9 +39,9 @@ function FormResult({ formData }: FormResultProps) {
 
         const handleFetchResult = (result: ApiResponse | DownloadData) => {
             if (formData.api === HTMLPARSER_URLS.RETURN_JSON) {
-                handleJsonResult(result)
+                handleJsonResult(result as ApiResponse)
             } else if (isDownloadFileUrl(formData.api)) {
-                downloadFile(result)
+                downloadFile(result as DownloadData)
             }
         }
 
