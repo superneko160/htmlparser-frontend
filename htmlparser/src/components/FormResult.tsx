@@ -5,6 +5,7 @@ import type {
     ApiResponse,
     SuccessApiResponse,
     ErrorApiResponse,
+    DownloadData,
 } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import { fetchData } from './../utils/dataFetcher'
@@ -36,7 +37,7 @@ function FormResult({ formData }: FormResultProps) {
             }
         }
 
-        const handleFetchResult = (result: ApiResponse | Blob) => {
+        const handleFetchResult = (result: ApiResponse | DownloadData) => {
             if (formData.api === HTMLPARSER_URLS.RETURN_JSON) {
                 handleJsonResult(result)
             } else if (isDownloadFileUrl(formData.api)) {
