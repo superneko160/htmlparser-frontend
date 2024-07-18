@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react'
-import type { FormData, AttributeValue, SuccessApiResponse, ErrorApiResponse } from './../types'
+import type {
+    IndexFormData,
+    AttributeValue,
+    SuccessApiResponse,
+    ErrorApiResponse,
+} from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import { fetchData } from './../utils/dataFetcher'
 import { isDownloadFileUrl, downloadFile } from './../utils/downloadFile'
 import Loading from './Loading'
 
 type FormResultProps = {
-    formData: FormData
+    formData: IndexFormData
 }
 
 function FormResult({ formData }: FormResultProps) {

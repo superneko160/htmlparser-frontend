@@ -1,4 +1,4 @@
-export type FormData = {
+export type IndexFormData = {
     url: string
     elements: string
     attrs: string[]
