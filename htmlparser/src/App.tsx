@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import type { FormData } from './types'
+import type { IndexFormData } from './types'
 import Form from './components/Form'
 import FormResult from './components/FormResult'
 
 function App() {
-    const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState<IndexFormData>({
         url: '',
         elements: '',
         attrs: [],
         api: '',
     })
 
-    const handleSubmit = (formData: FormData) => {
+    const handleSubmit = (formData: IndexFormData) => {
         setFormData(() => formData)
     }
 

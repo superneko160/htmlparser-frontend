@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import type { FormData } from './../types'
+import type { IndexFormData } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import htmltagIcon from '/htmltag.svg'
 import downloadIcon from '/download.svg'
 
 type FormProps = {
-    onSubmit: (formData: FormData) => void
+    onSubmit: (formData: IndexFormData) => void
 }
 
 function Form({ onSubmit }: FormProps) {
-    const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState<IndexFormData>({
         url: '',
         elements: '',
         attrs: [],
