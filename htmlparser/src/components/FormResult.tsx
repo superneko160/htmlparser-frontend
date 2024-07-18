@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import type {
     IndexFormData,
     AttributeValue,
+    ApiResponse,
     SuccessApiResponse,
     ErrorApiResponse,
+    DownloadData,
 } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import { fetchData } from './../utils/dataFetcher'
@@ -23,16 +25,10 @@ function FormResult({ formData }: FormResultProps) {
         const fetchAndSetData = async () => {
             setIsLoading(true)
             setError(null)
+
             try {
                 const result = await fetchData(formData)
-                if (formData.api === HTMLPARSER_URLS.RETURN_JSON) {
-                    if ('data' in result) {
-                        setData(result as SuccessApiResponse)
-                    } else {
-                        setError((result as ErrorApiResponse).error)
-                    }
-                }
-                if (isDownloadFileUrl(formData.api)) downloadFile(result)
+                handleFetchResult(result)
             } catch (error) {
                 console.error('データの取得中にエラーが発生しました:', error)
                 setError('データの取得中にエラーが発生しました')
@@ -40,6 +36,23 @@ function FormResult({ formData }: FormResultProps) {
                 setIsLoading(false)
             }
         }
+
+        const handleFetchResult = (result: ApiResponse | DownloadData) => {
+            if (formData.api === HTMLPARSER_URLS.RETURN_JSON) {
+                handleJsonResult(result as ApiResponse)
+            } else if (isDownloadFileUrl(formData.api)) {
+                downloadFile(result as DownloadData)
+            }
+        }
+
+        const handleJsonResult = (result: ApiResponse) => {
+            if ('data' in result) {
+                setData(result as SuccessApiResponse)
+            } else {
+                setError((result as ErrorApiResponse).error)
+            }
+        }
+
         fetchAndSetData()
     }, [formData])
 
