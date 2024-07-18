@@ -26,3 +26,5 @@ export interface ErrorApiResponse {
     status: number
     error: string
 }
+
+export type ApiResponse = SuccessApiResponse | ErrorApiResponse
