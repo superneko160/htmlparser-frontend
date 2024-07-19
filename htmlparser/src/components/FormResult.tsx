@@ -37,7 +37,12 @@ function FormResult({ formData }: FormResultProps) {
             }
         }
 
-        const handleFetchResult = (result: ApiResponse | DownloadData) => {
+        const handleFetchResult = (result: ApiResponse | DownloadData | null) => {
+            if (result === null) {
+                setError('データの取得中にエラーが発生しました')
+                return
+            }
+
             if (formData.api === HTMLPARSER_URLS.RETURN_JSON) {
                 handleJsonResult(result as ApiResponse)
             } else if (isDownloadFileUrl(formData.api)) {
