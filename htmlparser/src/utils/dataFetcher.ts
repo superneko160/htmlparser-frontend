@@ -1,12 +1,14 @@
-import type { IndexFormData } from './../types'
+import type { IndexFormData, DownloadData, ApiResponse } from './../types'
 import { getDownloadFileName, isDownloadFileUrl } from './downloadFile'
 
 /**
  * WebAPIにPOST送信しデータを取得
  * @param {IndexFormData} formData
- * @return {Promise<Blob | any | null>}
+ * @return {Promise<ApiResponse | DownloadData | null>}
  */
-export async function fetchData(formData: IndexFormData): Promise<Blob | any | null> {
+export async function fetchData(
+    formData: IndexFormData,
+): Promise<ApiResponse | DownloadData | null> {
     try {
         const postData = createPostData(formData)
         const response = await fetch(formData.api, {
@@ -37,9 +39,12 @@ function createPostData(formData: IndexFormData): FormData {
  * レスポンスを適切な形式に変換
  * @param {Response} response
  * @param {string} apiUrl
- * @return {Promise<Blob | any>}
+ * @return {Promise<ApiResponse | DownloadData>}
  */
-async function parseResponse(response: Response, apiUrl: string): Promise<Blob | any> {
+async function parseResponse(
+    response: Response,
+    apiUrl: string,
+): Promise<ApiResponse | DownloadData> {
     const fileName = getDownloadFileName(apiUrl)
     if (isDownloadFileUrl(apiUrl)) {
         const content = await response.blob()
