@@ -14,11 +14,11 @@
 
 [htmlparser-backend](https://github.com/superneko160/htmlparser-backend)
 
-## SetUp
+## SetUp and Build
 
 ```bash
 cd htmlparser
-bun install
+bun run build
 ```
 
 ## Run
