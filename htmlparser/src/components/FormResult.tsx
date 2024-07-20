@@ -4,7 +4,6 @@ import type {
     AttributeValue,
     ApiResponse,
     SuccessApiResponse,
-    ErrorApiResponse,
     DownloadData,
 } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
@@ -44,18 +43,48 @@ function FormResult({ formData }: FormResultProps) {
             }
 
             if (formData.api === HTMLPARSER_URLS.RETURN_JSON) {
-                handleJsonResult(result as ApiResponse)
-            } else if (isDownloadFileUrl(formData.api)) {
-                downloadFile(result as DownloadData)
+                handleJsonApiResult(result)
+                return
             }
+
+            if (isDownloadFileUrl(formData.api)) {
+                handleDownloadResult(result)
+                return
+            }
+
+            setError('Unexpected API type')
+        }
+
+        const handleJsonApiResult = (result: ApiResponse | DownloadData) => {
+            if ('data' in result || 'error' in result) {
+                handleJsonResult(result)
+                return
+            }
+
+            setError('Unexpected result type for JSON API')
+        }
+
+        const handleDownloadResult = (result: ApiResponse | DownloadData) => {
+            if ('content' in result && 'fileName' in result) {
+                downloadFile(result)
+                return
+            }
+
+            setError('Unexpected result type for download URL')
         }
 
         const handleJsonResult = (result: ApiResponse) => {
             if ('data' in result) {
-                setData(result as SuccessApiResponse)
-            } else {
-                setError((result as ErrorApiResponse).error)
+                setData(result)
+                return
             }
+
+            if ('error' in result) {
+                setError(result.error)
+                return
+            }
+
+            setError('Unexpected result type')
         }
 
         fetchAndSetData()
