@@ -1,5 +1,6 @@
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
 import type { DownloadData } from './../types'
+import { getCurrentDateTimeString } from './Datetime'
 
 /**
  * ファイルでダウンロード
@@ -23,7 +24,7 @@ export function downloadFile(data: DownloadData) {
  * @return {string} ファイル名
  */
 export function getDownloadFileName(apiUrl: string): string {
-    let fileName = 'result'
+    let fileName = `解析結果_${getCurrentDateTimeString()}`
     if (apiUrl === HTMLPARSER_URLS.DOWNLOAD_JSON) fileName += '.json'
     if (apiUrl === HTMLPARSER_URLS.DOWNLOAD_CSV) fileName += '.csv'
     return fileName
