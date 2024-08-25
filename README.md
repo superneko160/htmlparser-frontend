@@ -24,7 +24,6 @@ bun run build
 ## Run
 
 ```bash
-cd htmlparser
 bun run dev
 ```
 
@@ -37,23 +36,24 @@ http://localhost:5173
 ## Lint
 
 ```bash
-cd htmlparser
 bun lint
 ```
 
 ## Format
 
 ```bash
-cd htmlparser
 bun format
 ```
 
 ## Test
 
 ```bash
-cd htmlparser
-bun test
+npm test
 ```
+
+> [!CAUTION]
+> When I run the test on Bun(```bun test```), I get an error, but it is not caused by the code.
+> [oven-sh/bun#10275](https://github.com/oven-sh/bun/issues/10275)
 
 ## Stacks
 
