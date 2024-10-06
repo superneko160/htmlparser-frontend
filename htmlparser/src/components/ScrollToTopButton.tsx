@@ -28,6 +28,7 @@ function ScrollToTopButton() {
         <>
             {isVisible && (
                 <button
+                    type='button'
                     onClick={scrollToTop}
                     className='fixed flex items-center justify-center bottom-5 right-5 w-12 h-12 bg-blue-500 font-bold text-2xl text-white rounded-full cursor-pointer hover:bg-blue-400 transition-colors duration-300'
                 >
