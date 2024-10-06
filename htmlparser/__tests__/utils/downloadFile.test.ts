@@ -1,18 +1,22 @@
 import { describe, it, expect } from 'vitest'
 import { getDownloadFileName, isDownloadFileUrl } from './../../src/utils/downloadFile'
+import { getCurrentDateTimeString } from './../../src/utils/Datetime'
 import { HTMLPARSER_URLS } from './../../src/codeinfo/urls'
 
 describe('getDownloadFileName', () => {
-    it('JSONダウンロードURLの場合、文字列"result.json"を返す', () => {
-        expect(getDownloadFileName(HTMLPARSER_URLS.DOWNLOAD_JSON)).toBe('result.json')
+    it('JSONダウンロードURLの場合、文字列"解析結果_本日の日付.json"を返す', () => {
+        const result = `解析結果_${getCurrentDateTimeString()}.json`
+        expect(getDownloadFileName(HTMLPARSER_URLS.DOWNLOAD_JSON)).toBe(result)
     })
 
-    it('CSVダウンロードURLの場合、文字列"result.csv"を返す', () => {
-        expect(getDownloadFileName(HTMLPARSER_URLS.DOWNLOAD_CSV)).toBe('result.csv')
+    it('CSVダウンロードURLの場合、文字列"解析結果_本日の日付.csv"を返す', () => {
+        const result = `解析結果_${getCurrentDateTimeString()}.csv`
+        expect(getDownloadFileName(HTMLPARSER_URLS.DOWNLOAD_CSV)).toBe(result)
     })
 
-    it('その他のURLの場合、文字列"result"を返す', () => {
-        expect(getDownloadFileName(HTMLPARSER_URLS.RETURN_JSON)).toBe('result')
+    it('その他のURLの場合、文字列"解析結果_本日の日付"を返す', () => {
+        const result = `解析結果_${getCurrentDateTimeString()}`
+        expect(getDownloadFileName(HTMLPARSER_URLS.RETURN_JSON)).toBe(result)
     })
 })
 
