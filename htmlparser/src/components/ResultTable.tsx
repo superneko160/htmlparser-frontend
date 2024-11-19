@@ -1,4 +1,4 @@
-import type { SuccessApiResponse } from '../types'
+import type { SuccessApiResponse, AttributeValue } from '../types'
 
 type ResultTableProps = {
     data: SuccessApiResponse

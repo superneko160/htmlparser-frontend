@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { IndexFormData, AttributeValue } from './../types'
+import type { IndexFormData } from './../types'
 import { useDataFetch } from './../hooks/useDataFetch'
 import Loading from './Loading'
 import ResultTable from './ResultTable'
