@@ -18,6 +18,12 @@ export type ElementData = {
     [element: string]: AttributeValue[]
 }
 
+export type UseDataFetchResult = {
+    data: SuccessApiResponse | null
+    error: string | null
+    isLoading: boolean
+}
+
 export interface SuccessApiResponse {
     data: ElementData
 }
