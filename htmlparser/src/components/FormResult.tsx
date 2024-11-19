@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import type { IndexFormData } from './../types'
 import { useDataFetch } from './../hooks/useDataFetch'
 import Loading from './Loading'
