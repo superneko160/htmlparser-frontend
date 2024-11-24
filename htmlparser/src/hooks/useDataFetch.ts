@@ -12,13 +12,13 @@ import { isDownloadFileUrl, downloadFile } from '../utils/downloadFile'
 
 export const useDataFetch = (formData: IndexFormData): UseDataFetchResult => {
     const [data, setData] = useState<SuccessApiResponse | null>(null)
-    const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchAndSetData = async () => {
             setIsLoading(true)
-            setError(null)
+            setError('')
 
             try {
                 const result = await fetchData(formData)
