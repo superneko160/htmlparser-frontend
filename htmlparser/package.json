@@ -9,7 +9,8 @@
         "lint": "bunx @biomejs/biome lint ./src",
         "format": "bunx @biomejs/biome format --write .",
         "test": "vitest",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "typecheck": "tsc --noEmit"
     },
     "dependencies": {
         "react": "^18.3.1",
