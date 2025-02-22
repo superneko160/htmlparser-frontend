@@ -1,3 +1,4 @@
+import { motion } from "motion/react"
 import type { IndexFormData } from './../types'
 import { useDataFetch } from './../hooks/useDataFetch'
 import Loading from './Loading'
@@ -31,7 +32,18 @@ function FormResult({ formData }: FormResultProps) {
                 ) : error ? (
                     <p className='text-red-500'>エラー: {error}</p>
                 ) : data ? (
-                    <ResultTable data={data} />
+                    <motion.div
+                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                            delay: 0.1,
+                            duration: 0.8,
+                            ease: "easeOut"
+                        }}
+                    >
+                        <ResultTable data={data} />
+                    </motion.div>
                 ) : (
                     <p>No Data</p>
                 )}
