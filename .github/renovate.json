@@ -18,6 +18,12 @@
         "typescript"
       ],
       "groupName": "minor and patch dependencies"
+    },
+    {
+      "matchFiles": [
+        ".node-version"
+      ],
+      "enabled": false
     }
   ]
 }
