@@ -1,4 +1,4 @@
-import { motion } from "motion/react"
+import { motion } from 'motion/react'
 import type { IndexFormData } from './../types'
 import { useDataFetch } from './../hooks/useDataFetch'
 import Loading from './Loading'
@@ -39,7 +39,7 @@ function FormResult({ formData }: FormResultProps) {
                         transition={{
                             delay: 0.1,
                             duration: 0.8,
-                            ease: "easeOut"
+                            ease: 'easeOut',
                         }}
                     >
                         <ResultTable data={data} />
