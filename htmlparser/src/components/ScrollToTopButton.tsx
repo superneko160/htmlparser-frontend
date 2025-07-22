@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion } from "motion/react"
+import { motion } from 'motion/react'
 
 function ScrollToTopButton() {
     const [isVisible, setIsVisible] = useState(false)
@@ -34,7 +34,7 @@ function ScrollToTopButton() {
                     transition={{
                         delay: 0.1,
                         duration: 0.8,
-                        ease: "easeOut"
+                        ease: 'easeOut',
                     }}
                     type='button'
                     onClick={scrollToTop}
