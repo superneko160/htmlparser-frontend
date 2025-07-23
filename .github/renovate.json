@@ -21,7 +21,7 @@
     },
     {
       "matchFiles": [
-        ".node-version"
+        "**/.node-version"
       ],
       "enabled": false
     }
