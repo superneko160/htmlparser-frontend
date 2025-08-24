@@ -23,7 +23,7 @@ function FormResult({ formData }: FormResultProps) {
                 </li>
                 <li>
                     <span className='font-semibold text-gray-900'>取得属性:</span>{' '}
-                    {formData.attrs.length === 0 ? '全属性' : formData.attrs.join(', ')}
+                    {formData.attrs.length === 0 ? '全属性' : formData.attrs.join(',')}
                 </li>
             </ul>
             <div>
