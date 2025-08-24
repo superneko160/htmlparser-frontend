@@ -87,66 +87,66 @@ function Form({ onSubmit }: FormProps) {
                         />
                     </div>
                 </div>
-                
+
                 <div className='my-3 border border-slate-400 rounded-sm pl-2 py-3 md:mx-20'>
                     <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-1'>
-                        <CheckboxItem 
-                            id='id' 
-                            label='id' 
+                        <CheckboxItem
+                            id='id'
+                            label='id'
                             checked={formData.attrs.includes('id')}
                             onChange={handleAttrChange}
                         />
-                        <CheckboxItem 
-                            id='class' 
-                            label='class' 
+                        <CheckboxItem
+                            id='class'
+                            label='class'
                             checked={formData.attrs.includes('class')}
                             onChange={handleAttrChange}
                         />
-                        <CheckboxItem 
-                            id='href' 
-                            label='href' 
+                        <CheckboxItem
+                            id='href'
+                            label='href'
                             checked={formData.attrs.includes('href')}
                             onChange={handleAttrChange}
                         />
-                        <CheckboxItem 
-                            id='src' 
-                            label='src' 
+                        <CheckboxItem
+                            id='src'
+                            label='src'
                             checked={formData.attrs.includes('src')}
                             onChange={handleAttrChange}
                         />
-                        <CheckboxItem 
-                            id='alt' 
-                            label='alt' 
+                        <CheckboxItem
+                            id='alt'
+                            label='alt'
                             checked={formData.attrs.includes('alt')}
                             onChange={handleAttrChange}
                         />
-                        <CheckboxItem 
-                            id='action' 
-                            label='action' 
+                        <CheckboxItem
+                            id='action'
+                            label='action'
                             checked={formData.attrs.includes('action')}
                             onChange={handleAttrChange}
                         />
-                        <CheckboxItem 
-                            id='method' 
-                            label='method' 
+                        <CheckboxItem
+                            id='method'
+                            label='method'
                             checked={formData.attrs.includes('method')}
                             onChange={handleAttrChange}
                         />
-                        <CheckboxItem 
-                            id='name' 
-                            label='name' 
+                        <CheckboxItem
+                            id='name'
+                            label='name'
                             checked={formData.attrs.includes('name')}
                             onChange={handleAttrChange}
                         />
-                        <CheckboxItem 
-                            id='value' 
-                            label='value' 
+                        <CheckboxItem
+                            id='value'
+                            label='value'
                             checked={formData.attrs.includes('value')}
                             onChange={handleAttrChange}
                         />
                     </div>
                 </div>
-                
+
                 <div className='flex justify-center my-3'>
                     <button
                         type='button'
@@ -156,7 +156,7 @@ function Form({ onSubmit }: FormProps) {
                         リセット
                     </button>
                 </div>
-                
+
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-1 my-2 px-4 md:px-20'>
                     <button
                         type='submit'
