@@ -36,24 +36,20 @@ http://localhost:5173
 ## Lint
 
 ```bash
-bun lint
+bun run lint
 ```
 
 ## Format
 
 ```bash
-bun format
+bun run format
 ```
 
 ## Test
 
 ```bash
-npm test
+bun run test
 ```
-
-> [!CAUTION]
-> When I run the test on Bun(```bun test```), I get an error, but it is not caused by the code.
-> [oven-sh/bun#10275](https://github.com/oven-sh/bun/issues/10275)
 
 ## Stacks
 

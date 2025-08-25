@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { IndexFormData } from './../types'
 import { HTMLPARSER_URLS } from './../codeinfo/urls'
+import CheckboxItem from './CheckboxItem'
 import htmltagIcon from '/htmltag.svg'
 import downloadIcon from '/download.svg'
 
@@ -80,52 +81,83 @@ function Form({ onSubmit }: FormProps) {
                             id='elements'
                             value={formData.elements}
                             onChange={handleElementsChange}
-                            placeholder='div'
+                            placeholder='img,div'
                             required
                             className='rounded-lg border border-transparent px-2 py-1 mx-0.5 text-base font-medium text-slate-800 bg-slate-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-75'
                         />
                     </div>
                 </div>
-                <div className='flex justify-center my-3'>
-                    <div className='mr-4 mt-2'>
-                        <label htmlFor='id' className='text-medium mr-2'>
-                            id
-                        </label>
-                        <input
-                            type='checkbox'
-                            name='attrs[]'
+
+                <div className='my-3 border border-slate-400 rounded-sm pl-2 py-3 md:mx-20'>
+                    <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-1'>
+                        <CheckboxItem
                             id='id'
-                            value='id'
-                            onChange={handleAttrChange}
+                            label='id'
                             checked={formData.attrs.includes('id')}
-                            className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
-                        />
-                    </div>
-                    <div className='mt-2'>
-                        <label htmlFor='class' className='text-medium mr-2'>
-                            class
-                        </label>
-                        <input
-                            type='checkbox'
-                            name='attrs[]'
-                            id='class'
-                            value='class'
                             onChange={handleAttrChange}
-                            checked={formData.attrs.includes('class')}
-                            className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                         />
-                    </div>
-                    <div>
-                        <button
-                            type='button'
-                            onClick={resetForm}
-                            className='rounded-lg border border-transparent px-2 py-1 ml-2 text-base text-slate-100 bg-slate-500 cursor-pointer transition-colors hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-opacity-75'
-                        >
-                            リセット
-                        </button>
+                        <CheckboxItem
+                            id='class'
+                            label='class'
+                            checked={formData.attrs.includes('class')}
+                            onChange={handleAttrChange}
+                        />
+                        <CheckboxItem
+                            id='href'
+                            label='href'
+                            checked={formData.attrs.includes('href')}
+                            onChange={handleAttrChange}
+                        />
+                        <CheckboxItem
+                            id='src'
+                            label='src'
+                            checked={formData.attrs.includes('src')}
+                            onChange={handleAttrChange}
+                        />
+                        <CheckboxItem
+                            id='alt'
+                            label='alt'
+                            checked={formData.attrs.includes('alt')}
+                            onChange={handleAttrChange}
+                        />
+                        <CheckboxItem
+                            id='action'
+                            label='action'
+                            checked={formData.attrs.includes('action')}
+                            onChange={handleAttrChange}
+                        />
+                        <CheckboxItem
+                            id='method'
+                            label='method'
+                            checked={formData.attrs.includes('method')}
+                            onChange={handleAttrChange}
+                        />
+                        <CheckboxItem
+                            id='name'
+                            label='name'
+                            checked={formData.attrs.includes('name')}
+                            onChange={handleAttrChange}
+                        />
+                        <CheckboxItem
+                            id='value'
+                            label='value'
+                            checked={formData.attrs.includes('value')}
+                            onChange={handleAttrChange}
+                        />
                     </div>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-1 my-1 px-4 md:px-20'>
+
+                <div className='flex justify-center my-3'>
+                    <button
+                        type='button'
+                        onClick={resetForm}
+                        className='rounded-lg border border-transparent px-4 py-2 text-base text-slate-100 bg-slate-500 cursor-pointer transition-colors hover:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-opacity-75'
+                    >
+                        リセット
+                    </button>
+                </div>
+
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-1 my-2 px-4 md:px-20'>
                     <button
                         type='submit'
                         onClick={handleButtonClick}

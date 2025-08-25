@@ -15,15 +15,18 @@ function FormResult({ formData }: FormResultProps) {
         <div>
             <ul>
                 <li>
-                    <span className='font-semibold text-gray-900'>取得URL:</span> {formData.url}
+                    <span className='font-semibold text-slate-800'>取得URL:</span>{' '}
+                    <a href={formData.url} className='underline' target='_blank'>
+                        {formData.url}
+                    </a>
                 </li>
                 <li>
-                    <span className='font-semibold text-gray-900'>取得要素:</span>{' '}
+                    <span className='font-semibold text-slate-800'>取得要素:</span>{' '}
                     {formData.elements}
                 </li>
                 <li>
-                    <span className='font-semibold text-gray-900'>取得属性:</span>{' '}
-                    {formData.attrs.length === 0 ? '全属性' : formData.attrs.join(', ')}
+                    <span className='font-semibold text-slate-800'>取得属性:</span>{' '}
+                    {formData.attrs.length === 0 ? '全属性' : formData.attrs.join(',')}
                 </li>
             </ul>
             <div>
