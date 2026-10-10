@@ -14,7 +14,7 @@
     },
     "dependencies": {
         "@tailwindcss/postcss": "^4.3.3",
-        "motion": "^13.5.1",
+        "motion": "^14.1.0",
         "react": "^19.3.0",
         "react-dom": "^19.3.0"
     },
